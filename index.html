@@ -27,9 +27,25 @@
             guests: [];
           }
         }
+        async componentDidMount(){
+          const guests = (await axios.get('api/guests')).data;
+          this.setState({ guests });
+        }
         render(){
-
-          return <hr />
+          const { guests } = this.state;
+          if(!guests.length){
+            return <div>No guests yet...</div>
+          }
+          return (
+            <div>
+              <h1>The Acme Guest Book</h1>
+            <ul>
+              {
+                guests.map( guest => <li key={guest.id}>{guest.name}</li>)
+              }
+            </ul>
+            </div>
+          );
         }
       }
 
