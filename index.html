@@ -15,7 +15,26 @@
 <body>
   <div id="root"></div>
 
+  <script type="text/babel">
+      const { render } = ReactDOM;
+      const { Component } = React;
+      const root = document.querySelector('#root');
 
+      class App extends Component {
+        constructor(){
+          super();
+          this.state = {
+            guests: [];
+          }
+        }
+        render(){
 
+          return <hr />
+        }
+      }
+
+      render(<App />, root);
+
+  </script>
 </body>
 </html>
