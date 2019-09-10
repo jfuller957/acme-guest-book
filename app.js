@@ -14,11 +14,24 @@ const readFile = (file)=> {
   });
 }
 
+const readFileJSON = async(file) => {
+  const jsonString = await readFile(file);
+  return JSON.parse(jsonString);
+}
+
 const server = http.createServer( async (request, response)=> {
   try {
     if(request.url === '/') {
-      const html = await readFile('./index.html');
-      response.write(html);
+      //if(request.method === 'GET'){
+        const html = await readFile('./index.html');
+        response.write(html);
+        response.end();
+     // }
+    }
+    else if (request.url === '/api/guests'){
+      console.log('helloooo')
+      const guests = await readFileJSON('./guests.json');
+      response.write(JSON.stringify(guests));
       response.end();
     }
   }
