@@ -39,6 +39,10 @@
           return (
             <div>
               <h1>The Acme Guest Book</h1>
+              <form>
+                <input type="text" />
+                <button type="submit">Add Guest</button>
+              </form>
               <ul>
                 {
                   guests.map( guest => <li key={guest.id}>{guest.name}</li>)
